@@ -105,6 +105,7 @@ void Employee::Display_01(ostream &out)
     out << std::left << std::setw(25) << GetAddress() << " | ";
     out << std::left << std::setw(15) << GetPhoneNumber() << " | ";
     out << std::left << std::setw(30) << GetEmail() << " | ";
+    out << std::left << std::setw(20)  << GetPosition()  << "| "  ;
     out << std::left << std::setw(10) << GetSalary() << " | ";
     out << std::left << std::setw(15) << std::right << std::setw(0) << GetStartDay() << " | ";
     out << std::left << std::setw(15) << std::right << std::setw(0) << GetEndDay() << " | ";

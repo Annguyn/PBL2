@@ -146,7 +146,7 @@ void Customer::GetInformation()
 {
     // Nhập dữ liệu bằng tay
     std::cout << "Customer Information : " << std::endl;
-    std::cout << "Employee ID : ";
+    std::cout << "Customer ID : ";
     std::cin >> CustomerID;
     std::cout << "Full name : ";
     Menu::getInput(fullName, cin);

@@ -24,13 +24,13 @@ void DataManager<T>::ShowLists_file(const Vector_Class<T>& data, const char* fil
 			file << "ID" << std::right << std::setw(16) << "|";
 			file << "Full Name" << std::right << std::setw(14) << "|";
 			file << "Age" << std::right << std::setw(4) << "|";
-			file << "Day of birth" << std::right << std::setw(11) << "|";
+			file << "Day of birth" << std::right << std::setw(0) << "|";
 			file << "Address" << std::right << std::setw(21) << "|";
 			file << "Phone number" << std::right << std::setw(6) << "|";
 			file << "Email" << std::right << std::setw(28) << "|";
 			if (typeid(T) == typeid(Employee))
 			{
-				file << "Position" << std::right << std::setw(15) << "|";
+				file << "Position" << std::right << std::setw(18) << "|";
 				file << "Salary" << std::right << std::setw(7) << "|";
 				file << "Start day" << std::right << std::setw(9) << "|";
 				file << "End day" << std::right << std::setw(11) << "|";
@@ -111,22 +111,22 @@ void DataManager<T>::Display(const Vector_Class<T>& data)
 		cout << "ID" << std::right << std::setw(16) << "|";
 		cout << "Full Name" << std::right << std::setw(14) << "|";
 		cout << "Age" << std::right << std::setw(4) << "|";
-		cout << "Day of birth" << std::right << std::setw(11) << "|";
+		cout << "Day of birth" << std::right << std::setw(0) << "|";
 		cout << "Address" << std::right << std::setw(21) << "|";
 		cout << "Phone number" << std::right << std::setw(6) << "|";
 		cout << "Email" << std::right << std::setw(28) << "|";
 		if (typeid(T) == typeid(Employee))
 		{
-			cout << "Position" << std::right << std::setw(15) << "|";
+			cout << "Position" << std::right << std::setw(14) << "|";
 			cout << "Salary" << std::right << std::setw(7) << "|";
-			cout << "Start day" << std::right << std::setw(9) << "|";
-			cout << "End day" << std::right << std::setw(11) << "|";
-			cout << "Is working" << std::right << std::setw(3) << "|";
+			cout << "Start day" << std::right << std::setw(10) << "|";
+			cout << "End day" << std::right << std::setw(13) << "|";
+			cout << "Is working" << std::right << std::setw(0) << "|";
 		}
 		else if (typeid(T) == typeid(Customer))
 		{
-			cout << "Point" << std::right << std::setw(15) << "|";
-			cout << "Customer Type" << std::right << std::setw(7) << "|";
+			cout << "Point" << std::right << std::setw(19) << "|";
+			cout << "Customer Type" << std::right << std::setw(0) << "|";
 		}
 	}
 	else if (typeid(T) == typeid(Food) || typeid(T) == typeid(ElectricalProduct) || typeid(T) == typeid(Houseware))
@@ -160,7 +160,7 @@ void DataManager<T>::Display(const Vector_Class<T>& data)
 		}
 		else if (typeid(T) == typeid(Houseware))
 		{
-			cout << "Material" << std::right << std::setw(7) << "|";
+			cout << "Material" << std::right << std::setw(99) << "|";
 		}
 	}
 	if (typeid(T) == typeid(Discount))

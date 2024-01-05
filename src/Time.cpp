@@ -34,7 +34,7 @@ Time::Time(int hour, int minute) : day(0), month(0), year(0), hour(hour), minute
     if (hour < 0 || hour > 23 || minute < 0 || minute > 59) {
         throw std::invalid_argument("Invalid hour or minute value");
     }
-    // updateRealTime();
+    updateRealTime();
     this -> hour = hour ;
     this -> minute = minute ; 
 }

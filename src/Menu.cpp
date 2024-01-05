@@ -53,24 +53,27 @@ bool Menu::areEqual(const char *str1, const char *str2)
 
     return (*str1 == '\0' && *str2 == '\0');
 }
-void Menu::getInput(char *&str, istream &cin, int maxChar)
+void Menu::getInput(char *&str, std::istream &cin, int maxChar)
 {
-    char temp[maxChar] ;
-    std::cin.ignore();
+    char temp[maxChar];
+    cin >> std::ws; // Loại bỏ khoảng trắng và ký tự newline còn tồn đọng
+
     char ch = ' ';
     int index = 0;
     while (ch != '\n' && index < maxChar - 1)
     {
-        ch = std::cin.get();
+        ch = cin.get();
         temp[index++] = ch;
     }
     temp[index - 1] = '\0';
+
     str = new char[index];
     for (int i = 0; i < index; ++i)
     {
         str[i] = temp[i];
     }
 }
+
 void Menu::readAttributeTillDelimiter(char *&attribute, std::istream &file)
 {
     int MAX_LENGTH = 256;
@@ -2855,8 +2858,8 @@ void Menu::run()
     case 1:
     {
         bool validID = false;
-        while (true)
-        {
+        // while (true)
+        // {
             int customerid;
             cout << "Enter your CustomerID: ";
             std::cin >> customerid;
@@ -2884,13 +2887,13 @@ void Menu::run()
                     }
                     displayCustomerMenu(cus, order);
                     int choice;
-                    std::cout << YELLOW << "Choose a number to continue or 0 to exit: ";
+                    std::cout << YELLOW << "Choose 0 to return Customer Menu or other to return main menu: ";
                     std::cout << RESET;
                     std::cin >> choice;
                     system("CLS");
                     if (choice == 0)
                     {
-                        break;
+                        displayCustomerMenu(cus, order);
                     }
                     else
                     {
@@ -2915,7 +2918,7 @@ void Menu::run()
                     return;
                 }
             }
-        }
+        // }
         break;
     }
     case 2:
@@ -2931,13 +2934,13 @@ void Menu::run()
         system("CLS");
         displayManagerMenu();
         int choice;
-        std::cout << YELLOW << "Choose a number to continue or 0 to exit: ";
+        std::cout << YELLOW << "Choose 0 to return Manager Menu or other to return Main menu : ";
         std::cout << RESET;
         std::cin >> choice;
 
         if (choice == 0)
         {
-            break;
+            displayManagerMenu();
         }
         else
         {
@@ -2951,8 +2954,8 @@ void Menu::run()
     break;
     case 3:
     {
-        while (true)
-        {
+        // while (true)
+        // {
             int employeeid;
             std::cout << "Enter your Employee ID: ";
             std::cin >> employeeid;
@@ -2965,13 +2968,13 @@ void Menu::run()
                     Employee &employee = employeeManager.lists.at(i);
                     displayEmployeeMenu(employee);
                     int choice;
-                    std::cout << YELLOW << "Choose a number to continue or 0 to exit: ";
+                    std::cout << YELLOW << "Choose 0 to return Employee Menu or other number to return main menu :  ";
                     std::cout << RESET;
                     std::cin >> choice;
                     system("CLS");
                     if (choice == 0)
                     {
-                        break;
+                        displayEmployeeMenu(employee);
                     }
                     else
                     {
@@ -2990,11 +2993,11 @@ void Menu::run()
             {
                 return;
             }
-        }
+        // }
         break;
     }
     case 4:
-        exit = true;
+        // exit = true;
         break;
     default:
         std::cout << RED << "Invalid user type!" << std::endl;
