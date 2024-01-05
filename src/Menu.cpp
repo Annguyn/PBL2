@@ -2,8 +2,6 @@
 #include <iostream>
 #include <conio.h>
 #include <algorithm>
-#include <cstdlib>
-#include <cstring>
 using namespace std;
 void Menu::createDiscountPointvsTime()
 {
@@ -55,20 +53,18 @@ bool Menu::areEqual(const char *str1, const char *str2)
 
     return (*str1 == '\0' && *str2 == '\0');
 }
-void Menu::getInput(char *&str, std::istream &cin, int maxChar)
+void Menu::getInput(char *&str, istream &cin, int maxChar)
 {
-    char temp[maxChar];
-    cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-
+    char temp[maxChar] ;
+    std::cin.ignore();
     char ch = ' ';
     int index = 0;
     while (ch != '\n' && index < maxChar - 1)
     {
-        ch = cin.get();
+        ch = std::cin.get();
         temp[index++] = ch;
     }
     temp[index - 1] = '\0';
-
     str = new char[index];
     for (int i = 0; i < index; ++i)
     {
@@ -214,16 +210,17 @@ Menu::Menu()
         }
     }
     discountManager.GetData(discountManager.lists, "data/input_output/discount.txt");
-    
+    Time currentTime ;
     for (size_t i = 0; i < employeeManager.lists.getSize(); i++)
     {
         employeeManager.lists.at(i).calculateAge();
+        if(currentTime < employeeManager.lists.at(i).GetStartDay() || currentTime > employeeManager.lists.at(i).GetEndDay())
+        employeeManager.lists.at(i).SetIsWorking(false);
     }
     for (size_t i = 0; i < customerManager.lists.getSize(); i++)
     {
         customerManager.lists.at(i).calculateAge();
     }
-    
 }
 
 Menu::~Menu()
@@ -2289,9 +2286,19 @@ void Menu::displayManagerMenu()
 
             for (int i = 0; i < numEmployees; i++)
             {
+                bool found = false ; 
                 employees[i].GetInformation();
-
+                for(size_t j = 0 ; j< employeeManager.lists.getSize();j++){
+                        if(employeeManager.lists.at(j).GetEmployeeID() == employees[i].GetEmployeeID()) {
+                            found = true ;
+                            break ;
+                        }
+                }
+                if(!found) 
                 employeeManager.AddToLists(employees[i]);
+                else {
+                    std::cout << "Employee ID already existed" << std::endl ;
+                }
             }
 
             delete[] employees;
@@ -2314,9 +2321,19 @@ void Menu::displayManagerMenu()
 
             for (int i = 0; i < numCustomer; i++)
             {
+                bool found = false ; 
                 customers[i].GetInformation();
+                for (size_t j = 0 ; j < customerManager.lists.getSize() ; j++) {
+                    if(customerManager.lists.at(j).GetCustomerID() == customers[i].GetCustomerID()){
+                        found = true ;
+                        break;
+                    }
+                }
 
+                if(!found)
                 customerManager.AddToLists(customers[i]);
+                else 
+                    std::cout <<  RED <<  "Customer ID already existed" <<  RESET << std::endl ;
             }
 
             delete[] customers;
@@ -2357,7 +2374,18 @@ void Menu::displayManagerMenu()
                 for (size_t i = 0; i < numHouseware; i++)
                 {
                     cin >> houseware[i];
+                    bool found = false ;
+                    for (size_t j = 0; j < housewareManager.lists.getSize(); j++)
+                    {
+                        if(houseware[i].getMaSanPham() == housewareManager.lists.at(j).getMaSanPham()) {
+                            found = true ;
+                            break; 
+                        }
+                    }
+                    if(!found)
                     housewareManager.AddToLists(houseware[i]);
+                    else 
+                    std::cout << "ProductID already existed" << std::endl ;
                 }
                 delete[] houseware;
                 std::cout << YELLOW << "Enter 0 to return " << endl;
@@ -2379,7 +2407,18 @@ void Menu::displayManagerMenu()
                 for (size_t i = 0; i < numfood; i++)
                 {
                     cin >> food[i];
+                    bool found = false ;
+                    for (size_t j = 0; j < foodManager.lists.getSize(); j++)
+                    {
+                        if(food[i].getMaSanPham() == foodManager.lists.at(j).getMaSanPham()) {
+                            found = true ;
+                            break; 
+                        }
+                    }
+                    if(!found)
                     foodManager.AddToLists(food[i]);
+                    else 
+                    std::cout << "ProductID already existed" << std::endl ;
                 }
                 delete[] food;
                 std::cout << YELLOW << "Enter 0 to return " << endl;
@@ -2401,8 +2440,20 @@ void Menu::displayManagerMenu()
                 for (size_t i = 0; i < numelectricalproduct; i++)
                 {
                     cin >> electricalproducts[i];
+                    bool found = false ;
+                    for (size_t j = 0; j < electricalproductManager.lists.getSize(); j++)
+                    {
+                        if(electricalproducts[i].getMaSanPham() == electricalproductManager.lists.at(j).getMaSanPham()) {
+                            found = true ;
+                            break; 
+                        }
+                    }
+                    if(!found)
                     electricalproductManager.AddToLists(electricalproducts[i]);
-                }
+                    else {
+                    std::cout << "ProductID already existed" << std::endl ;
+                    }
+                    }
                 delete[] electricalproducts;
                 std::cout << YELLOW << "Enter 0 to return " << endl;
                 std::cout << RESET;

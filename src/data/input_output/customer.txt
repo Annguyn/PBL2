@@ -1,3 +1,2 @@
-1,,,0,04/01/2024,,,,11001,VIP
-2,,,0,04/01/2024,,,,112,Standard
-3,,,0,04/01/2024,,,,1055,VIP
+1,Nguyen Ba Xuan An,Male,20,19/09/2004,Dak Lak,0818563466,an@gmail.com,11001,VIP
+2,Tran Phuoc Phu,Male,20,01/07/2004,Hue,012569644,phu@gmail.com,112,Standard

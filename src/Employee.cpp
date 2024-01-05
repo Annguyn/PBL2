@@ -128,9 +128,6 @@ void Employee::GetInformation()
     Menu::getInput(fullName, std::cin);
     std::cout << "Age: ";
     std::cin >> age;
-
-    std::cout << "Day of birth (format: dd/mm/yyyy): ";
-    std::cin >> DayOfBirth;
     std::cout << "Gender: ";
     Menu::getInput(Gender, std::cin);
 
@@ -148,7 +145,8 @@ void Employee::GetInformation()
 
     std::cout << "Salary: ";
     std::cin >> salary;
-
+    std::cout << "Day of birth (format: dd/mm/yyyy): ";
+    std::cin >> DayOfBirth;
     std::cout << "Start day (format: dd/mm/yyyy hh:mm): ";
     std::cin >> startDay;
 
