@@ -1652,15 +1652,9 @@ void Menu::displayManagerMenu()
             case 1:
             {
                 housewareManager.Display(housewareManager.lists);
-                std::cout << BLUE << "Do you want to export file (Y/N)" << std::endl << RESET ;
-                char selection ;
-                std::cin >> selection ;
-                if(selection == 'Y' || selection == 'y') {
-                    housewareManager.ShowLists_file(housewareManager.lists,"data/houseware_lists.txt");
-                } 
                 std::cout << YELLOW << "Enter 0 to return " << endl;
                 std::cout << RESET;
-                
+                std::cout << BLUE << "Do you want to export file (Y/N)" << std::endl << RESET ; 
                 int is;
                 cin >> is;
                 system("CLS");
@@ -1671,12 +1665,6 @@ void Menu::displayManagerMenu()
             case 2:
             {
                 foodManager.Display(foodManager.lists);
-                std::cout << BLUE << "Do you want to export file (Y/N)" << std::endl << RESET ;
-                char selection ;
-                std::cin >> selection ;
-                if(selection == 'Y' || selection == 'y') {
-                    foodManager.ShowLists_file(foodManager.lists,"data/food_lists.txt");
-                } 
                 std::cout << YELLOW << "Enter 0 to return " << endl;
                 std::cout << RESET;
                 int is;
@@ -1689,12 +1677,6 @@ void Menu::displayManagerMenu()
             case 3:
             {
                 electricalproductManager.Display(electricalproductManager.lists);
-                std::cout << BLUE << "Do you want to export file (Y/N)" << std::endl << RESET ;
-                char selection ;
-                std::cin >> selection ;
-                if(selection == 'Y' || selection == 'y') {
-                    electricalproductManager.ShowLists_file(electricalproductManager.lists,"data/houseware_lists.txt");
-                } 
                 std::cout << YELLOW << "Enter 0 to return " << endl;
                 std::cout << RESET;
                 int is;

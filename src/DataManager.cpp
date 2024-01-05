@@ -5,7 +5,7 @@ DataManager<T>::DataManager()
 {
 }
 template <class T>
-void DataManager<T>::ShowLists_file(const Vector_Class<T>& data, const char* filename)
+void DataManager<T>::ShowLists_file(const Vector_Class<T> &data, const char *filename)
 {
 	std::ofstream file(filename);
 	if (file.is_open())
@@ -30,55 +30,64 @@ void DataManager<T>::ShowLists_file(const Vector_Class<T>& data, const char* fil
 			file << "Email" << std::right << std::setw(28) << "|";
 			if (typeid(T) == typeid(Employee))
 			{
-				file << "Position" << std::right << std::setw(18) << "|";
+				file << "Position" << std::right << std::setw(14) << "|";
 				file << "Salary" << std::right << std::setw(7) << "|";
-				file << "Start day" << std::right << std::setw(9) << "|";
-				file << "End day" << std::right << std::setw(11) << "|";
-				file << "Is working" << std::right << std::setw(3) << "|";
+				file << "Start day" << std::right << std::setw(10) << "|";
+				file << "End day" << std::right << std::setw(13) << "|";
+				file << "Is working" << std::right << std::setw(0) << "|";
 			}
 			else if (typeid(T) == typeid(Customer))
 			{
-				file << "Point" << std::right << std::setw(15) << "|";
-				file << "Customer Type" << std::right << std::setw(7) << "|";
+				file << "Point" << std::right << std::setw(19) << "|";
+				file << "Customer Type" << std::right << std::setw(0) << "|";
 			}
 		}
 		else if (typeid(T) == typeid(Food) || typeid(T) == typeid(ElectricalProduct) || typeid(T) == typeid(Houseware))
 		{
 			file << "STT" << std::right << std::setw(3) << "|";
-			file << "Product ID" << std::right << std::setw(16) << "|";
-			file << "Import ID" << std::right << std::setw(14) << "|";
-			file << "Product Name" << std::right << std::setw(4) << "|";
-			file << "Price" << std::right << std::setw(11) << "|";
-			file << "Quantity Sold" << std::right << std::setw(21) << "|";
-			file << "Quanity in Stock" << std::right << std::setw(6) << "|";
-			file << "Manufacturer" << std::right << std::setw(28) << "|";
-			file << "Production Date" << std::right << std::setw(28) << "|";
+			file << "Product ID" << std::right << std::setw(2) << "|";
+			file << "Import ID" << std::right << std::setw(0) << "|";
+			file << "Product Name" << std::right << std::setw(16) << "|";
+			file << "Price" << std::right << std::setw(2) << "|";
+			file << "Quanity in Stock" << std::right << std::setw(0) << "|";
+			file << "Manufacturer" << std::right << std::setw(12) << "|";
+			file << "Production Date" << std::right << std::setw(3) << "|";
 			if (typeid(T) == typeid(Food))
 			{
-				file << "Food Type" << std::right << std::setw(4) << "|";
-				file << "Calories" << std::right << std::setw(11) << "|";
-				file << "Carbohydrates" << std::right << std::setw(21) << "|";
-				file << "Fat" << std::right << std::setw(6) << "|";
-				file << "Vitamins" << std::right << std::setw(28) << "|";
-				file << "Net Weight" << std::right << std::setw(28) << "|";
-				file << "Is Expired" << std::right << std::setw(28) << "|";
+				file << "Food Type" << std::right << std::setw(1) << "|";
+				file << "Calories" << std::right << std::setw(1) << "|";
+				file << "Carbohydrates" << std::right << std::setw(1) << "|";
+				file << "Fat" << std::right << std::setw(1) << "|";
+				file << "Vitamins" << std::right << std::setw(1) << "|";
+				file << "Net Weight" << std::right << std::setw(1) << "|";
+				file << "Is Expired" << std::right << std::setw(5) << "|";
 			}
 			else if (typeid(T) == typeid(ElectricalProduct))
 			{
-				file << "Resolution X" << std::right << std::setw(28) << "|";
-				file << "Resolution Y" << std::right << std::setw(28) << "|";
-				file << "Capacity" << std::right << std::setw(18) << "|";
-				file << "Screen Size" << std::right << std::setw(18) << "|";
-				file << "Wattage" << std::right << std::setw(18) << "|";
-				file << "Operating System" << std::right << std::setw(18) << "|";
+				file << "Resolution X" << std::right << std::setw(1) << "|";
+				file << "Resolution Y" << std::right << std::setw(1) << "|";
+				file << "Capacity" << std::right << std::setw(1) << "|";
+				file << "Screen Size" << std::right << std::setw(1) << "|";
+				file << "Wattage" << std::right << std::setw(1) << "|";
+				file << "Operating System" << std::right << std::setw(1) << "|";
 			}
 			else if (typeid(T) == typeid(Houseware))
 			{
-				file << "Matterial" << std::right << std::setw(19) << "|";
+				file << "Matterial" << std::right << std::setw(0) << "|";
 			}
 		}
+		if (typeid(T) == typeid(Discount))
+		{
+			file << "STT" << std::right << std::setw(3) << "|";
+			file << "Discount ID" << std::right << std::setw(0) << "|";
+			file << "Discount Type" << std::right << std::setw(10) << "|";
+			file << "Coupon Code" << std::right << std::setw(2) << "|";
+			file << "Percentage" << std::right << std::setw(0) << "|";
+			file << "Available" << std::right << std::setw(0) << "|";
+			file << "\n";
+		}
 		file << std::endl;
-		for (int i = 0; i < 200; ++i)
+		for (int i = 0; i < 160; ++i)
 		{
 			file << '-';
 		}
@@ -93,7 +102,7 @@ void DataManager<T>::ShowLists_file(const Vector_Class<T>& data, const char* fil
 }
 
 template <class T>
-void DataManager<T>::Display(const Vector_Class<T>& data)
+void DataManager<T>::Display(const Vector_Class<T> &data)
 {
 
 	if (typeid(T) == typeid(Customer) || typeid(T) == typeid(Employee))
@@ -160,18 +169,18 @@ void DataManager<T>::Display(const Vector_Class<T>& data)
 		}
 		else if (typeid(T) == typeid(Houseware))
 		{
-			cout << "Material" << std::right << std::setw(99) << "|";
+			cout << "Material" << std::right << std::setw(0) << "|";
 		}
 	}
 	if (typeid(T) == typeid(Discount))
-    {
-        cout << "STT" << std::right << std::setw(3) << "|";
-        cout << "Discount ID" << std::right << std::setw(0) << "|";
-        cout << "Discount Type" << std::right << std::setw(10) << "|";
-        cout << "Coupon Code" << std::right << std::setw(2) << "|";
-        cout << "Percentage" << std::right << std::setw(0) << "|";
-        cout << "Available" << std::right << std::setw(0) << "|";
-        cout << "\n";
+	{
+		cout << "STT" << std::right << std::setw(3) << "|";
+		cout << "Discount ID" << std::right << std::setw(0) << "|";
+		cout << "Discount Type" << std::right << std::setw(10) << "|";
+		cout << "Coupon Code" << std::right << std::setw(2) << "|";
+		cout << "Percentage" << std::right << std::setw(0) << "|";
+		cout << "Available" << std::right << std::setw(0) << "|";
+		cout << "\n";
 	}
 	cout << std::endl;
 	for (int i = 0; i < 160; ++i)
@@ -187,13 +196,13 @@ void DataManager<T>::Display(const Vector_Class<T>& data)
 }
 
 template <class T>
-void DataManager<T>::AddToLists(const T& obj)
+void DataManager<T>::AddToLists(const T &obj)
 {
 	lists.pushBack(obj);
 }
 
 template <class T>
-void DataManager<T>::SaveData(const Vector_Class<T> data, const char* filename)
+void DataManager<T>::SaveData(const Vector_Class<T> data, const char *filename)
 {
 	std::ofstream file(filename);
 	if (file.is_open())
@@ -207,12 +216,11 @@ void DataManager<T>::SaveData(const Vector_Class<T> data, const char* filename)
 	else
 	{
 		std::cerr << "Can't open" << filename << "for writing" << std::endl;
-	    }
+	}
 }
 
-
 template <class T>
-void DataManager<T>::GetData(Vector_Class<T>& data, const char* filename)
+void DataManager<T>::GetData(Vector_Class<T> &data, const char *filename)
 {
 	std::ifstream file(filename);
 	if (file.is_open())
