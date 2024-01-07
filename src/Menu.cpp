@@ -768,7 +768,7 @@ void Menu::displayCustomerMenu(Customer &cus, Order &order)
                 {
                     if (proid == foodManager.lists.at(i).getMaSanPham())
                     {
-                        cout << "Product name : " << foodManager.lists.at(i).getTenSanPham() << endl;
+                        std::cout<<GREEN << "Product name : " << foodManager.lists.at(i).getTenSanPham() << std::endl;
                         cout << "Quantity of product remaining : " << foodManager.lists.at(i).getSoLuongTonKho() << endl;
                         std::cout << CYAN << "Enter quanity =  ";
                         std::cout << RESET;
